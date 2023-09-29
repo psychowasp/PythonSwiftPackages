@@ -20,7 +20,8 @@ let package = Package(
 		
 	],
 	dependencies: [
-		.package(path: "/Volumes/CodeSSD/GitHub/SwiftonizePlugin"), // will be github url later
+		//.package(path: "/Volumes/CodeSSD/GitHub/SwiftonizePlugin"), // will be github url later
+		.package(url: "https://github.com/PythonSwiftLink/SwiftonizePlugin", branch: "master"),
 		.package(path: "../PythonLib"), // required package
 		.package(path: "../PythonSwiftCore"), // required package
 		.package(url: "https://github.com/googleads/swift-package-manager-google-mobile-ads", branch: "main")
