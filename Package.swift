@@ -20,10 +20,16 @@ let package = Package(
 		
 	],
 	dependencies: [
+<<<<<<< Updated upstream
 		//.package(path: "/Volumes/CodeSSD/GitHub/SwiftonizePlugin"), // will be github url later
 		.package(url: "https://github.com/PythonSwiftLink/SwiftonizePlugin", branch: "master"),
 		.package(path: "../PythonLib"), // required package
 		.package(path: "../PythonSwiftCore"), // required package
+=======
+		.package(path: "/Volumes/CodeSSD/GitHub/SwiftonizePlugin"), // will be github url later
+		//.package(path: "../PythonLib"), // required package
+		.package(path: "../PythonSwiftLink"), // required package
+>>>>>>> Stashed changes
 		.package(url: "https://github.com/googleads/swift-package-manager-google-mobile-ads", branch: "main")
 	],
 	targets: [
@@ -32,8 +38,7 @@ let package = Package(
 		.target(
 			name: "PyFoundation",
 			dependencies: [
-				"PythonLib",
-				"PythonSwiftCore",
+				.product(name: "PythonSwiftCore", package: "PythonSwiftLink")
 			],
 			// adding Swiftonize as plugin will make it automatic build all files in "wrappers"
 			plugins: [ .plugin(name: "Swiftonize", package: "SwiftonizePlugin") ]
@@ -41,8 +46,7 @@ let package = Package(
 		.target(
 			name: "PyTextToSpeech",
 			dependencies: [
-				"PythonLib",
-				"PythonSwiftCore",
+				.product(name: "PythonSwiftCore", package: "PythonSwiftLink")
 			],
 			// adding Swiftonize as plugin will make it automatic build all files in "wrappers"
 			plugins: [ .plugin(name: "Swiftonize", package: "SwiftonizePlugin") ]
@@ -50,32 +54,29 @@ let package = Package(
 		.target(
 			name: "PySpeechRecognizer",
 			dependencies: [
-				"PythonLib",
-				"PythonSwiftCore",
+				.product(name: "PythonSwiftCore", package: "PythonSwiftLink"),
 			],
 			plugins: [ .plugin(name: "Swiftonize", package: "SwiftonizePlugin") ]
 		),
 		.target(
 			name: "PyWebViews",
 			dependencies: [
-				"PythonLib",
-				"PythonSwiftCore",
+				.product(name: "PythonSwiftCore", package: "PythonSwiftLink")
 			],
 			plugins: [ .plugin(name: "Swiftonize", package: "SwiftonizePlugin") ]
 		),
 		.target(
 			name: "PyCoreBluetooth",
 			dependencies: [
-				"PythonLib",
-				"PythonSwiftCore",
+				.product(name: "PythonSwiftCore", package: "PythonSwiftLink")
 			],
+			resources: [.copy("example")],
 			plugins: [ .plugin(name: "Swiftonize", package: "SwiftonizePlugin") ]
 		),
 		.target(
 			name: "PyCoreVideo",
 			dependencies: [
-				"PythonLib",
-				"PythonSwiftCore",
+				.product(name: "PythonSwiftCore", package: "PythonSwiftLink")
 			],
 			plugins: [ .plugin(name: "Swiftonize", package: "SwiftonizePlugin") ]
 		),
@@ -90,17 +91,15 @@ let package = Package(
 		.target(
 			name: "PyCamera",
 			dependencies: [
-				"PythonLib",
-				"PythonSwiftCore",
-				"PyCoreVideo"
+				.product(name: "PythonSwiftCore", package: "PythonSwiftLink"),
+				"PyCoreVideo",
 			],
 			plugins: [ .plugin(name: "Swiftonize", package: "SwiftonizePlugin") ]
 		),
 		.target(
 			name: "PyAdmob",
 			dependencies: [
-				"PythonLib",
-				"PythonSwiftCore",
+				.product(name: "PythonSwiftCore", package: "PythonSwiftLink"),
 				// admob package
 				.product(name: "GoogleMobileAds", package: "swift-package-manager-google-mobile-ads")
 			],

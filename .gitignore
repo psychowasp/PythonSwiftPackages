@@ -1,3 +1,8 @@
 
 Sources/.DS_Store
 Sources/PyCoreBluetooth/.DS_Store
+.DS_Store
+Package.resolved
+.swiftpm/xcode/xcuserdata/codebuilder.xcuserdatad/xcschemes/xcschememanagement.plist
+.swiftpm/xcode/package.xcworkspace/xcuserdata/codebuilder.xcuserdatad/UserInterfaceState.xcuserstate
+.swiftpm/xcode/package.xcworkspace/contents.xcworkspacedata

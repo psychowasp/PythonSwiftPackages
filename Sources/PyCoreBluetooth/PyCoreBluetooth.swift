@@ -9,6 +9,9 @@ import PythonSwiftCore
 //
 //
 //}
+public let example = Bundle.module.url(forResource: "example", withExtension: nil)!
+public let main_py = example.appendingPathComponent("main.py")
+
 
 extension UUID: PyConvertible {
     public var pyObject: PythonObject {

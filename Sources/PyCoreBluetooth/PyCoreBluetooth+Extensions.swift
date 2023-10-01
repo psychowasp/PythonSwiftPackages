@@ -8,6 +8,7 @@
 import Foundation
 import CoreBluetooth
 import PythonSwiftCore
+import PythonTypeAlias
 
 extension CBService: PyConvertible, PyHashable {
     public var pyObject: PythonObject { .init(getter: pyPointer) }
