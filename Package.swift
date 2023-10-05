@@ -1,4 +1,4 @@
-// swift-tools-version: 5.7
+// swift-tools-version: 5.9
 // The swift-tools-version declares the minimum version of Swift required to build this package.
 
 import PackageDescription
@@ -16,14 +16,13 @@ let package = Package(
 		.library(name: "PyCoreVideo", targets: ["PyCoreVideo"]),
 		//.library(name: "PyPHPicker", targets: ["PyPHPicker"]),
 		.library(name: "PyCamera", targets: ["PyCamera"]),
-		.library(name: "PyAdmob", targets: ["PyAdmob"]),
+		//.library(name: "PyAdmob", targets: ["PyAdmob"]),
 		
 	],
 	dependencies: [
-		.package(path: "/Volumes/CodeSSD/GitHub/SwiftonizePlugin"), // will be github url later
-		.package(path: "../PythonLib"), // required package
-		.package(path: "../PythonSwiftCore"), // required package
-		.package(url: "https://github.com/googleads/swift-package-manager-google-mobile-ads", branch: "main")
+		.package(url: "https://github.com/PythonSwiftLink/KivySwiftLink", from: .init(0, 0, 0)),
+		.package(url: "https://github.com/PythonSwiftLink/SwiftonizePlugin", from: .init(0, 0, 0))
+		//.package(url: "https://github.com/googleads/swift-package-manager-google-mobile-ads", branch: "main")
 	],
 	targets: [
 		// Targets are the basic building blocks of a package, defining a module or a test suite.
@@ -31,8 +30,7 @@ let package = Package(
 		.target(
 			name: "PyFoundation",
 			dependencies: [
-				"PythonLib",
-				"PythonSwiftCore",
+				.product(name: "PythonSwiftCore", package: "KivySwiftLink"),
 			],
 			
 			// adding Swiftonize as plugin will make it automatic build all files in "wrappers"
@@ -41,8 +39,7 @@ let package = Package(
 		.target(
 			name: "PyTextToSpeech",
 			dependencies: [
-				"PythonLib",
-				"PythonSwiftCore",
+				.product(name: "PythonSwiftCore", package: "KivySwiftLink"),
 			],
 			// adding Swiftonize as plugin will make it automatic build all files in "wrappers"
 			plugins: [ .plugin(name: "Swiftonize", package: "SwiftonizePlugin") ]
@@ -50,32 +47,29 @@ let package = Package(
 		.target(
 			name: "PySpeechRecognizer",
 			dependencies: [
-				"PythonLib",
-				"PythonSwiftCore",
+				.product(name: "PythonSwiftCore", package: "KivySwiftLink"),
 			],
 			plugins: [ .plugin(name: "Swiftonize", package: "SwiftonizePlugin") ]
 		),
 		.target(
 			name: "PyWebViews",
 			dependencies: [
-				"PythonLib",
-				"PythonSwiftCore",
+				.product(name: "PythonSwiftCore", package: "KivySwiftLink"),
 			],
 			plugins: [ .plugin(name: "Swiftonize", package: "SwiftonizePlugin") ]
 		),
 		.target(
 			name: "PyCoreBluetooth",
 			dependencies: [
-				"PythonLib",
-				"PythonSwiftCore",
+				.product(name: "PythonSwiftCore", package: "KivySwiftLink"),
 			],
 			plugins: [ .plugin(name: "Swiftonize", package: "SwiftonizePlugin") ]
 		),
 		.target(
 			name: "PyCoreVideo",
 			dependencies: [
-				"PythonLib",
-				"PythonSwiftCore",
+				.product(name: "PythonSwiftCore", package: "KivySwiftLink"),
+				.product(name: "PySwiftObject", package: "KivySwiftLink"),
 			],
 			plugins: [ .plugin(name: "Swiftonize", package: "SwiftonizePlugin") ]
 		),
@@ -90,22 +84,21 @@ let package = Package(
 		.target(
 			name: "PyCamera",
 			dependencies: [
-				"PythonLib",
-				"PythonSwiftCore",
+				.product(name: "PythonSwiftCore", package: "KivySwiftLink"),
 				"PyCoreVideo"
 			],
 			plugins: [ .plugin(name: "Swiftonize", package: "SwiftonizePlugin") ]
 		),
-		.target(
-			name: "PyAdmob",
-			dependencies: [
-				"PythonLib",
-				"PythonSwiftCore",
-				// admob package
-				.product(name: "GoogleMobileAds", package: "swift-package-manager-google-mobile-ads")
-			],
-			plugins: [ .plugin(name: "Swiftonize", package: "SwiftonizePlugin") ]
-		),
+//		.target(
+//			name: "PyAdmob",
+//			dependencies: [
+//				"PythonLib",
+//				"PythonSwiftCore",
+//				// admob package
+//				.product(name: "GoogleMobileAds", package: "swift-package-manager-google-mobile-ads")
+//			],
+//			plugins: [ .plugin(name: "Swiftonize", package: "SwiftonizePlugin") ]
+//		),
 		
 	]
 )
