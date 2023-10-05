@@ -16,15 +16,16 @@ let package = Package(
 		.library(name: "PyCoreVideo", targets: ["PyCoreVideo"]),
 		//.library(name: "PyPHPicker", targets: ["PyPHPicker"]),
 		.library(name: "PyCamera", targets: ["PyCamera"]),
-		.library(name: "PyAdmob", targets: ["PyAdmob"]),
+		//.library(name: "PyAdmob", targets: ["PyAdmob"]),
 		
 	],
 	dependencies: [
 		
 		//.package(path: "../KivySwiftLink"), // required package
-		.package(url: "https://github.com/KivySwiftLink/KivySwiftLink", from: .init(0, 0, 0)),
-		.package(url: "https://github.com/KivySwiftLink/SwiftonizePlugin", from: .init(0, 0, 0)),
-		.package(url: "https://github.com/googleads/swift-package-manager-google-mobile-ads", branch: "main")
+		//.package(url: "https://github.com/PythonSwiftLink/PythonSwiftLink", branch: "master"),
+		.package(url: "https://github.com/PythonSwiftLink/KivySwiftLink", from: .init(0, 0, 0)),
+		.package(url: "https://github.com/PythonSwiftLink/SwiftonizePlugin", from: .init(0, 0, 0)),
+		//.package(url: "https://github.com/googleads/swift-package-manager-google-mobile-ads", branch: "main")
 		
 	],
 	targets: [
@@ -34,46 +35,46 @@ let package = Package(
 			name: "PyFoundation",
 			dependencies: [
 				.product(name: "PythonSwiftCore", package: "KivySwiftLink")
-			],
+			]
 			// adding Swiftonize as plugin will make it automatic build all files in "wrappers"
-			plugins: [ .plugin(name: "Swiftonize", package: "SwiftonizePlugin") ]
+			//plugins: [ .plugin(name: "Swiftonize", package: "SwiftonizePlugin") ]
 		),
 		.target(
 			name: "PyTextToSpeech",
 			dependencies: [
 				.product(name: "PythonSwiftCore", package: "KivySwiftLink")
-			],
+			]
 			// adding Swiftonize as plugin will make it automatic build all files in "wrappers"
-			plugins: [ .plugin(name: "Swiftonize", package: "SwiftonizePlugin") ]
+			//plugins: [ .plugin(name: "Swiftonize", package: "SwiftonizePlugin") ]
 		),
 		.target(
 			name: "PySpeechRecognizer",
 			dependencies: [
 				.product(name: "PythonSwiftCore", package: "KivySwiftLink"),
-			],
-			plugins: [ .plugin(name: "Swiftonize", package: "SwiftonizePlugin") ]
+			]
+			//plugins: [ .plugin(name: "Swiftonize", package: "SwiftonizePlugin") ]
 		),
 		.target(
 			name: "PyWebViews",
 			dependencies: [
 				.product(name: "PythonSwiftCore", package: "KivySwiftLink")
-			],
-			plugins: [ .plugin(name: "Swiftonize", package: "SwiftonizePlugin") ]
+			]
+			//plugins: [ .plugin(name: "Swiftonize", package: "SwiftonizePlugin") ]
 		),
 		.target(
 			name: "PyCoreBluetooth",
 			dependencies: [
 				.product(name: "PythonSwiftCore", package: "KivySwiftLink")
 			],
-			resources: [.copy("example")],
-			plugins: [ .plugin(name: "Swiftonize", package: "SwiftonizePlugin") ]
+			resources: [.copy("example")]
+			//plugins: [ .plugin(name: "Swiftonize", package: "SwiftonizePlugin") ]
 		),
 		.target(
 			name: "PyCoreVideo",
 			dependencies: [
 				.product(name: "PythonSwiftCore", package: "KivySwiftLink")
-			],
-			plugins: [ .plugin(name: "Swiftonize", package: "SwiftonizePlugin") ]
+			]
+			//plugins: [ .plugin(name: "Swiftonize", package: "SwiftonizePlugin") ]
 		),
 //		.target(
 //			name: "PyPHPicker",
@@ -88,18 +89,18 @@ let package = Package(
 			dependencies: [
 				.product(name: "PythonSwiftCore", package: "KivySwiftLink"),
 				"PyCoreVideo",
-			],
-			plugins: [ .plugin(name: "Swiftonize", package: "SwiftonizePlugin") ]
+			]
+			//plugins: [ .plugin(name: "Swiftonize", package: "SwiftonizePlugin") ]
 		),
-		.target(
-			name: "PyAdmob",
-			dependencies: [
-				.product(name: "PythonSwiftCore", package: "KivySwiftLink"),
-				// admob package
-				.product(name: "GoogleMobileAds", package: "swift-package-manager-google-mobile-ads")
-			],
-			plugins: [ .plugin(name: "Swiftonize", package: "SwiftonizePlugin") ]
-		),
+//		.target(
+//			name: "PyAdmob",
+//			dependencies: [
+//				.product(name: "PythonSwiftCore", package: "KivySwiftLink"),
+//				// admob package
+//				.product(name: "GoogleMobileAds", package: "swift-package-manager-google-mobile-ads")
+//			]
+//			//plugins: [ .plugin(name: "Swiftonize", package: "SwiftonizePlugin") ]
+//		),
 		
 	]
 )
