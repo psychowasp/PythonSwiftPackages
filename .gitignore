@@ -1,3 +1,7 @@
 
 Sources/.DS_Store
 Sources/PyCoreBluetooth/.DS_Store
+.DS_Store
+Package.resolved
+build/*
+.swiftpm/*

@@ -34,6 +34,7 @@ let package = Package(
 				"PythonLib",
 				"PythonSwiftCore",
 			],
+			
 			// adding Swiftonize as plugin will make it automatic build all files in "wrappers"
 			plugins: [ .plugin(name: "Swiftonize", package: "SwiftonizePlugin") ]
 		),
